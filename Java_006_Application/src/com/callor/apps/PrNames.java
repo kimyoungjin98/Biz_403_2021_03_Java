@@ -8,7 +8,6 @@ public class PrNames {
 				
 		};
 		
-		Random rnd = new Random
 		
 	}
 	
