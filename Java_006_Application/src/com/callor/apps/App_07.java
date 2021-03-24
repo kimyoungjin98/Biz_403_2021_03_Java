@@ -34,8 +34,42 @@ public class App_07 {
 			nums[i] = rnd.nextInt(100) + 1;
 		}
 		for(int num : nums) {
-			System.out.println(num + "\t");
+			System.out.print(num + "\t");
 		}
+		System.out.println("=========================");
+		System.out.println("오름차순 정렬");
+		System.out.println("-------------------------");
+		
+		
+		/* 
+		 * 두 변수의 값을 서로 교환
+		 * 제 3의 임시저장소 변수가 필요하다
+		 */
+		
+		int num1 = 30;
+		int num2 = 40;
+		int temp = num1; // num1의 값을 임시저장
+		num1 = num2;
+		num2 = temp;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
