@@ -10,6 +10,7 @@ public class App_08 {
 		
 		ssV1.score();
 		ssV1.total();
+		ssV1.printScore();
 		
 	}
 
