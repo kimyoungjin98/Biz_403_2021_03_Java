@@ -88,6 +88,7 @@ public class IolistServiceV1 {
 
 	// TODO 매입매출 등록하기
 	public void input() {
+		while(true) {
 		System.out.println("==============================");
 		System.out.println("매입 매출 등록");
 		System.out.println("-------------------------------");
@@ -126,7 +127,7 @@ public class IolistServiceV1 {
 
 		// 입력된 매출 데이터를 데이터리스트에 담기
 		iolist.add(iolistVO);
-
+		}
 	}
 
 	// TODO 저장된 리스트 출력하기
