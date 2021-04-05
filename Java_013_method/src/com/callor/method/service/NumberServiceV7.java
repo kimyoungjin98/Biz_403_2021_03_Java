@@ -2,17 +2,9 @@ package com.callor.method.service;
 
 public class NumberServiceV7 {
 
-	String[] sub;
 	InputService inputService;
 
 	public NumberServiceV7() {
-
-		sub = new String[5];
-		sub[0] = "국어";
-		sub[1] = "영어";
-		sub[2] = "수학";
-		sub[3] = "과학";
-		sub[4] = "국사";
 
 		inputService = new InputService();
 
@@ -20,16 +12,23 @@ public class NumberServiceV7 {
 
 	public void inputScore() {
 
+		String sub[] = { "국어", "영어", "수학", "과학", "국사" };
+		Integer retNum = null;
+
 		for (int i = 0; i < sub.length; i++) {
-			Integer retNum = inputService.inputValue(sub[i]);
-			if (retNum == null) {
-				System.out.println("입력종료");
-				break;
-			} 
-			while(true) {
-				
+			while (true) {
+				retNum = inputService.inputValue(sub[i]);
+				if (retNum == null) {
+					return;
+				} else if (retNum < 0 || retNum > 100) {
+					System.out.println("범위 초과");
+					continue;
+				} else {
+					System.out.println(sub[i] + "의 점수는 : " + retNum);
+					break;
+				}
 			}
-			
 		}
+		return;
 	}
 }

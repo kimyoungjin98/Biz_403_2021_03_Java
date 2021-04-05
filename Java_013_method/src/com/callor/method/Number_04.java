@@ -8,7 +8,6 @@ public class Number_04 {
 
 		NumberServiceV7 nsV7 = new NumberServiceV7();
 		nsV7.inputScore();
-
 	}
 
 }
