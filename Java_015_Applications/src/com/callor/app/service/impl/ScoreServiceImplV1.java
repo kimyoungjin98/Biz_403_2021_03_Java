@@ -77,6 +77,7 @@ public class ScoreServiceImplV1 implements ScoreService {
 //		}
 		while (true) {
 			Integer intNum = inService.inputValue("학번", 1);
+			strNum = String.valueOf(intNum);
 			if (intNum == null) {
 				return;
 			}
@@ -119,7 +120,7 @@ public class ScoreServiceImplV1 implements ScoreService {
 		System.out.println("학번\t이름\t국어\t영어\t수학\t총점\t평균");
 		for (int i = 0; i < scoreList.size(); i++) {
 			ScoreVO vo = scoreList.get(i);
-			System.out.printf("%s\t%s\t%d\t%d\t%d\t%d\t%3.2f\n", vo.getName(), vo.getNum(), vo.getKor(), vo.getEng(),
+			System.out.printf("%s\t%s\t%d\t%d\t%d\t%d\t%3.2f\n", vo.getNum(), vo.getName(), vo.getKor(), vo.getEng(),
 					vo.getMath(), vo.getTotal(), vo.getAvg());
 		}
 
