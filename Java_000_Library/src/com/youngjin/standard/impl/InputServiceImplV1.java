@@ -53,7 +53,7 @@ public class InputServiceImplV1 implements InputService {
 	@Override
 	public Integer inputValue(String title, int start) {
 		// TODO 시작값을 갖는 유효성 검사 추가한 method
-		title = String.format("%s( %d 이상 )", start);
+		title = String.format("%s( %d 이상 )", title, start);
 		while (true) {
 			// intIn에 저장된 값 == inputValue(String title)이
 			// return 해준 값

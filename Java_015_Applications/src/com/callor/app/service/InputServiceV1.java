@@ -17,7 +17,7 @@ public class InputServiceV1 {
 
 		while(true) {
 			
-			System.out.println(title + " 값을 입력하세요");
+			System.out.println(title + " 을 입력하세요");
 			System.out.print(">> ");
 			String strNum = scan.nextLine();
 			Integer intNum = null;
