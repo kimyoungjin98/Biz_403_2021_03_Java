@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import com.callor.app.model.ScoreVO;
 import com.callor.app.service.ScoreService;
+import com.youngjin.standard.InputService;
 import com.youngjin.standard.impl.InputServiceImplV1;
 
 /*
@@ -26,15 +27,19 @@ import com.youngjin.standard.impl.InputServiceImplV1;
  *  		이 return 학생이름을 inputScore() 에서
  *  		변수에 담아 처리를 할수있다
  */
-public class ScoreServiceImplV1 implements ScoreService {
+public class ScoreServiceImplV1A implements ScoreService {
 
-	Scanner scan;
-	List<ScoreVO> scoreList;
-	InputServiceImplV1 inService;
-	String strName;
-	String strNum;
+	 
+	// 학생의 이름을 입력받을때 사용할 객체
+	protected Scanner scan;
+	
+	// 저장소
+	protected List<ScoreVO> scoreList;
+	
+	// 학번, 점수를 입력받을때 사용할 객체
+	protected InputService inService;
 
-	public ScoreServiceImplV1() {
+	public ScoreServiceImplV1A() {
 		scan = new Scanner(System.in);
 		scoreList = new ArrayList<ScoreVO>();
 		inService = new InputServiceImplV1();
@@ -64,7 +69,7 @@ public class ScoreServiceImplV1 implements ScoreService {
 				continue;
 			}
 			if (intMenu == 1) {
-				this.inputName();
+				this.inputScore();
 			} else if (intMenu == 2) {
 				this.printScore();
 			}
@@ -72,48 +77,53 @@ public class ScoreServiceImplV1 implements ScoreService {
 	}
 
 	public void inputName() {
-//		while (true) {
-//			System.out.println("학번을 입력하세요(QUIT:종료)");
-//			System.out.print(">> ");
-//			strNum = scan.nextLine();
-//			if (strNum.equals("QUIT")) {
-//				return;
-//			}
-//			try {
-//				Integer intNum = Integer.valueOf(strNum);
-//			} catch (NumberFormatException e) {
-//				System.out.println("QUIT나 정수값만 입력하세요");
-//				continue;
-//			}
-//			System.out.println("이름을 입력하세요(QUIT:종료)");
-//			System.out.print(">> ");
-//			strName = scan.nextLine();
-//			if (strName.equals("QUIT")) {
-//				return;
-//			}
-//			break;
-//		}
-		while (true) {
-			Integer intNum = inService.inputValue("학번", 1);
-			String.format("2021%03d", intNum);
-			strNum = String.valueOf(intNum);
-			if (intNum == null) {
-				return;
-			}
-
-			System.out.println("이름을 입력하세요(QUIT:종료)");
-			System.out.print(">> ");
-			strName = scan.nextLine();
-			if (strName.equals("QUIT")) {
-				return;
-			}
-
-			this.inputScore();
-		} // end while
 
 	}
 
+	protected String inputName(String strNum) {
+		// TODO
+		while (true) {
+			System.out.println(strNum + "학생의 이름 입력(QUIT:종료)");
+			System.out.print(">> ");
+			String strName = scan.nextLine();
+			if (strName.equals("QUIT")) {
+				return null;
+			} else if (strName.equals("")) {
+				System.out.println("학생이름은 반드시 입력해야 합니다");
+				continue;
+			}
+			return strName;
+		}
+
+	}
+	
+	/*
+	 * 현재 클래스 내부에서만 호출되는 method private으로 선언한다
+	 * 현재 클래스를 상속받아 확장하여 사용할수 있도록 하려면
+	 * private => protected로 변경 해주는 것이 좋다
+	 */
+	protected String inputNum() {
+
+		Integer intNum = inService.inputValue("학번", 1);
+		String strNum = String.format("2021%03d", intNum);
+		if (intNum == null) {
+			return null;
+		}
+		
+		return strNum;
+	}
+
 	public void inputScore() {
+
+		String strNum = this.inputNum();
+		if(strNum == null) {
+			return;
+		}
+		
+		String strName = this.inputName(strNum);
+		if(strName == null) {
+			return;
+		}
 
 		String[] subject = new String[] { "국어", "영어", "수학" };
 		Integer[] scores = new Integer[subject.length];
@@ -123,15 +133,17 @@ public class ScoreServiceImplV1 implements ScoreService {
 				return;
 			}
 		}
+		
 		ScoreVO vo = new ScoreVO();
 		vo.setKor(scores[0]);
 		vo.setEng(scores[1]);
 		vo.setMath(scores[2]);
 		vo.setName(strName);
 		vo.setNum(strNum);
+		
+		// vo에 담긴 데이터를 List 저장소에 추가
 		scoreList.add(vo);
-		
-		
+
 	}
 
 	public void printScore() {
