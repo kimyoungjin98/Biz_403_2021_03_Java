@@ -1,9 +1,7 @@
 # 나의 JDK
 * 프로젝트를 수행하는 과정에서 생성된(만든) 클래스중에 다른
 프로젝트에서도 활용할 수 있는 코드가 생성되었다
-
 * 내가 만든 클래스를 JDK처럼 만들어 두고 다른 프로젝트에서 활용할 수 있도록 한번 구현해 보자
-
 * JDK 처럼 모음을 만들어 두고, 다른 프로젝트에서 연결하여 사용할 수 있도록 만든 프로젝트를 라이브러리 라고 한다
 
 ## InputService
@@ -16,3 +14,12 @@
 ## InputServiceImplV1
 * since 2021.04
 * inputService interface 구현체
+
+## MenuService
+* since 2021.04
+* 사용자에게 Charactor 메뉴를 보여주고
+* 업무 번호를 입력하면 해당하는 업무 번호를 return하고, QUIT를 입력하면 null을 return
+
+## MenuServiceImplV1
+* since 2021.04
+* MenuService interface 구현체
